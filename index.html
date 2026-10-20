@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10 | Thiệp Chúc Mừng Nghệ Thuật</title>
+  <meta name="description" content="Thiệp chúc mừng tương tác Ngày Phụ nữ Việt Nam 20/10 với hiệu ứng mở hộp quà thần kỳ, mưa hoa hồng, pháo hoa và những lời chúc may mắn ngọt ngào nhất.">
+  <meta name="theme-color" content="#f7b7cb">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas cho hiệu ứng Mưa hoa hồng, Trái tim và Pháo hoa -->
+  <canvas id="celebration-canvas" aria-hidden="true"></canvas>
+
+  <!-- Lớp nền mờ ảo & Đốm sáng lung linh (Background ambient glow) -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Thanh công cụ góc trên: Âm thanh & Mở lại quà -->
+  <header class="top-nav" id="top-nav">
+    <div class="date-badge">
+      <span class="badge-icon">🌸</span>
+      <span class="badge-text">20 Tháng 10 • Ngày Phụ Nữ Việt Nam</span>
+    </div>
+    <div class="top-actions">
+      <button id="sound-toggle-btn" class="icon-btn" title="Bật/Tắt âm thanh" aria-label="Bật hoặc tắt âm thanh">
+        <span class="icon" id="sound-icon">🔔</span>
+        <span class="btn-label" id="sound-label">Âm thanh: Bật</span>
+      </button>
+      <button id="replay-btn" class="icon-btn hidden" title="Mở lại hộp quà" aria-label="Mở lại hộp quà bất ngờ">
+        <span class="icon">🎁</span>
+        <span class="btn-label">Mở lại quà</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="app-container" id="app-container">
+
+    <!-- PHẦN 1: MÀN HÌNH MỞ ĐẦU - HỘP QUÀ TƯƠNG TÁC -->
+    <section class="gift-scene" id="gift-scene">
+      <div class="gift-intro">
+        <span class="sparkle-tag">✨ Món Quà Yêu Thương Dành Cho Bạn ✨</span>
+        <h1 class="welcome-heading">Một Điều Diệu Kỳ Đang Chờ Đón...</h1>
+      </div>
+
+      <div class="gift-box-wrapper" id="gift-box-wrapper" role="button" tabindex="0" aria-label="Hộp quà chúc mừng 20/10. Nhấp hoặc chạm để mở!">
+        <!-- Vầng hào quang phía sau hộp quà -->
+        <div class="gift-aura"></div>
+        <div class="gift-sparkles-floating">
+          <span class="sparkle s1">✦</span>
+          <span class="sparkle s2">✧</span>
+          <span class="sparkle s3">🌸</span>
+          <span class="sparkle s4">💖</span>
+          <span class="sparkle s5">✦</span>
+        </div>
+
+        <!-- Hộp quà 3D tinh tế -->
+        <div class="gift-box" id="gift-box">
+          <!-- Nắp hộp quà kèm nơ thắt ruy băng -->
+          <div class="gift-lid" id="gift-lid">
+            <!-- Nơ trên nắp hộp -->
+            <div class="gift-bow">
+              <div class="bow-loop bow-left"></div>
+              <div class="bow-loop bow-right"></div>
+              <div class="bow-knot"></div>
+              <div class="bow-ribbon ribbon-tail-left"></div>
+              <div class="bow-ribbon ribbon-tail-right"></div>
+            </div>
+            <!-- Dải ruy băng nắp -->
+            <div class="lid-ribbon"></div>
+          </div>
+
+          <!-- Thân hộp quà -->
+          <div class="gift-body" id="gift-body">
+            <div class="body-ribbon vertical"></div>
+            <div class="body-ribbon horizontal"></div>
+            <div class="box-tag">For You 💌</div>
+          </div>
+
+          <!-- Đáy hộp bóng đổ -->
+          <div class="gift-shadow"></div>
+        </div>
+      </div>
+
+      <!-- Dòng hướng dẫn -->
+      <div class="gift-guide" id="gift-guide">
+        <div class="guide-hand">👆</div>
+        <p class="guide-text">Chạm vào hộp quà để nhận bất ngờ ✨</p>
+      </div>
+    </section>
+
+    <!-- PHẦN 2 & 3: NỘI DUNG CHÚC MỪNG & LÁ THƯ VIẾT TAY (Sau khi mở quà) -->
+    <section class="card-scene hidden" id="card-scene">
+      <!-- Tiêu đề nghệ thuật chính -->
+      <div class="header-section">
+        <div class="flower-garland">
+          <span>🌸</span><span>🌷</span><span>🌹</span><span>🌺</span><span>✨</span>
+        </div>
+        <h1 class="main-title" id="main-title">
+          Chúc một nửa thế giới ngày 20 tháng 10 vui vẻ!
+        </h1>
+        <p class="sub-title">Rạng rỡ như ánh mặt trời, dịu dàng như làn gió thu và luôn hạnh phúc trọn vẹn 💕</p>
+      </div>
+
+      <!-- Khung lá thư viết tay nghệ thuật (Handwritten Letter Card) -->
+      <article class="letter-card" id="letter-card">
+        <!-- Huy hiệu con dấu sáp trái tim phong cách vintage -->
+        <div class="wax-seal" title="Trao gửi từ trái tim">
+          <span class="seal-icon">💖</span>
+        </div>
+
+        <!-- Hoa văn trang trí bốn góc -->
+        <div class="card-corner top-left"></div>
+        <div class="card-corner top-right"></div>
+        <div class="card-corner bottom-left"></div>
+        <div class="card-corner bottom-right"></div>
+
+        <div class="letter-inner">
+          <div class="letter-header">
+            <span class="letter-date" id="current-date-text">Hà Nội, Ngày 20 Tháng 10</span>
+            <span class="letter-tag">Thư gửi phái đẹp ✉️</span>
+          </div>
+
+          <!-- Đoạn chữ chạy hiệu ứng Typing -->
+          <div class="typing-container">
+            <div class="typed-text" id="typed-text" aria-live="polite"></div>
+            <span class="cursor" id="typing-cursor"></span>
+          </div>
+
+          <!-- Nút bấm tua nhanh typing nếu người dùng muốn đọc ngay -->
+          <div class="letter-controls">
+            <button id="skip-typing-btn" class="text-link-btn" title="Bỏ qua hiệu ứng gõ chữ">
+              Xem toàn bộ thư ⏩
+            </button>
+          </div>
+
+          <div class="letter-footer">
+            <div class="signature">
+              <span class="sig-label">Thân mến trao tặng,</span>
+              <span class="sig-name">Món Quà Tình Cảm & Ngưỡng Mộ 💐</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Khu vực tương tác: Nút Nhận lời chúc may mắn -->
+      <div class="actions-section">
+        <button id="draw-wish-btn" class="magic-btn" aria-label="Nhận lời chúc may mắn">
+          <span class="magic-btn-glow"></span>
+          <span class="btn-stars">✨</span>
+          <span class="btn-text">Nhận lời chúc may mắn ✨</span>
+          <span class="btn-stars">✨</span>
+        </button>
+        <p class="action-hint">Chạm để rút một quẻ chúc may mắn và ngọt ngào dành riêng cho bạn!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL / POPUP: LỜI CHÚC MAY MẮN NGẪU NHIÊN -->
+  <div class="modal-backdrop hidden" id="wish-modal" role="dialog" aria-modal="true" aria-labelledby="modal-wish-category">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Đóng bảng lời chúc">✕</button>
+      
+      <div class="modal-sparkles-top">✨ 🌸 🌷 ✨</div>
+
+      <div class="wish-card-inner">
+        <div class="wish-badge" id="modal-wish-badge">
+          <span class="badge-symbol" id="modal-wish-symbol">🌺</span>
+          <span class="badge-category" id="modal-wish-category">Lời chúc Hạnh Phúc</span>
+        </div>
+
+        <h3 class="wish-title" id="modal-wish-title">Bông Hoa Tươi Thắm Dành Riêng Cho Bạn</h3>
+
+        <div class="wish-quote-box">
+          <span class="quote-mark left">“</span>
+          <p class="wish-content" id="modal-wish-content">
+            Đang bốc thăm lời chúc may mắn...
+          </p>
+          <span class="quote-mark right">”</span>
+        </div>
+
+        <div class="wish-extra-tip" id="modal-wish-tip">
+          💡 <em>Thông điệp vũ trụ: Bạn luôn là phiên bản tuyệt vời nhất khi được là chính mình!</em>
+        </div>
+      </div>
+
+      <div class="modal-footer-actions">
+        <button id="copy-wish-btn" class="secondary-btn" title="Sao chép lời chúc">
+          <span class="btn-icon">📋</span> Sao chép lời chúc
+        </button>
+        <button id="shuffle-wish-btn" class="primary-btn" title="Rút câu chúc khác">
+          <span class="btn-icon">🎲</span> Rút lời chúc khác
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION: Thông báo nhỏ khi copy thành công -->
+  <div class="toast-notification hidden" id="toast-notification" role="status">
+    <span class="toast-icon">💖</span>
+    <span class="toast-message" id="toast-message">Đã sao chép lời chúc vào khay nhớ tạm!</span>
+  </div>
+
+  <!-- Vết sao lấp lánh khi di chuột (Interactive cursor trail container) -->
+  <div id="cursor-trail-layer"></div>
+
+  <!-- Tải JavaScript ứng dụng -->
+  <script src="script.js"></script>
+</body>
+</html>
